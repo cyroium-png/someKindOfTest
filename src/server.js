@@ -8,6 +8,10 @@ const { SUPABASE_SERVICE_ROLE_KEY, SUPABASE_URL, PORT } = require('./config');
 const prisma = new PrismaClient();
 const { ENABLE_CRON } = require('./config');
 const { startCronJobs } = require('./utils/cron');
+const validateEnv = require('./utils/validateEnv');
+
+// Validate required environment variables and fail fast if missing
+validateEnv();
 
 const server = http.createServer(app);
 
